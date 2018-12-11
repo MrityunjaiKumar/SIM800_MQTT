@@ -1,6 +1,6 @@
 #include "GSM_MQTT.h"
 #include <SoftwareSerial.h>
-String MQTT_HOST = "test.mosquitto.org";
+String MQTT_HOST = "mrityunjai.in";
 /*
    MQTT host address
 */
@@ -8,7 +8,7 @@ String MQTT_PORT = "1883";
 /*
    MQTT port
 */
-SoftwareSerial mySerial(10, 11); // RX, TX
+SoftwareSerial GsmSerial(11, 10); // RX, TX
 /*
    Software Serial through which mqtt events log is printed at 9600 baud rate
 */
@@ -112,10 +112,10 @@ void GSM_MQTT::OnMessage(char *Topic, int TopicLength, char *Message, int Messag
      Message      :The containing array
      MessageLength:Number of characters in message
   */
-  mySerial.println(TopicLength);
-  mySerial.println(Topic);
-  mySerial.println(MessageLength);
-  mySerial.println(Message);
+  GsmSerial.println(TopicLength);
+  GsmSerial.println(Topic);
+  GsmSerial.println(MessageLength);
+  GsmSerial.println(Message);
 
 }
 GSM_MQTT MQTT(20);
